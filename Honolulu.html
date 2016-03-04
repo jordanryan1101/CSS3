@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+header {
+    background-color:#002933;
+    color:#00b8e6;
+    text-align:center;
+    padding:5px;	 
+}
+nav {
+    line-height:30px;
+    background-color: #eeeeee;
+    height:300px;
+    width:100px;
+    float: left;
+    padding:5px;	      
+}
+section {
+    width:350px;
+    float:left;
+    padding:30px;	 	 
+}
+footer {
+    background-color:#00e68a;
+    color:black;
+    clear:both;
+    text-align:center;
+    padding:5px;	 	 
+}
+img {
+    float:right; 
+    padding: 50px 90px 50px 0px;
+}
+p {
+   font-family: Georgia;
+   font-size: 25px ;
+    
+}
+h1 {
+
+}
+</style>
+</head>
+<body>
+
+<audio controls autoplay>
+  <source src="OvertheRainbow.mp3" type="audio/ogg">
+  <source src="OvertheRainbow.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+
+<header>
+<h1>City Gallery</h1>
+</header>
+
+<nav>
+<a href="London.html">London</a><br> 
+<a href="Honolulu.html">Honolulu</a><br>
+<a href="NewOrleans.html">New Orleans</a>
+</nav>
+
+<section>
+<h1>Honolulu</h1>
+<p>Honolulu is the state capital of Hawaii. Honolulu is a major tourist destination, is situated on the island of Oahu, and is the main gateway for Hawaii and  the United States. </p>
+<br>
+<p>The city is also a major hub for international business, military defense, as well as famously being host to a diverse variety of east-west and Pacific culture, cuisine, and traditions.
+</p>
+
+<p>Some interesting tourist destinations include;
+<a href="http://www.aloha-hawaii.com/oahu/aloha-tower/"target="_blank">Aloha Tower</a>, 
+<a href="https://pearlharboroahu.com/"target="_blank">Pearl Harbor</a>,
+<a href="http://www.iolanipalace.org/"target="_blank">Iolani Palace</a>.
+</p>
+</section>
+
+<aside>
+<img src="http://s3.goeshow.com/nsh/2013Hawaii/Image/Honolulu2.jpg">
+<img src="http://media-cdn.tripadvisor.com/media/photo-s/00/1a/25/58/aloha-tower.jpg"style="width:300px">
+<img src="https://s3-us-west-1.amazonaws.com/hawaii-com-wp/wp-content/uploads/2004/12/15100000/ArizonaMemorial.jpg"style="width:270px">
+</aside>
+
+<script>
+
+
+
+/******************************************
+
+* Cross browser cursor trailer script- By Brian Caputo (bcaputo@icdc.com)
+
+* Visit Dynamic Drive (http://www.dynamicdrive.com/) for full source code
+
+* Modified Dec 30th, 02' by DD. This notice must stay intact for use
+
+******************************************/
+
+
+
+A=document.getElementById
+
+B=document.all;
+
+C=document.layers;
+
+T1=new Array("https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Flag_of_Hawaii_(1816).svg/2000px-Flag_of_Hawaii_(1816).svg.png",80,50)
+
+
+
+var offsetx=15 //x offset of trail from mouse pointer
+
+var offsety=10 //y offset of trail from mouse pointer
+
+
+
+nos=parseInt(T1.length/3)
+
+rate=50
+
+ie5fix1=0;
+
+ie5fix2=0;
+
+rightedge=B? document.body.clientWidth-T1[1] : window.innerWidth-T1[1]-20
+
+bottomedge=B? document.body.scrollTop+document.body.clientHeight-T1[2] : window.pageYOffset+window.innerHeight-T1[2]
+
+
+
+for (i=0;i<nos;i++){
+
+createContainer("CUR"+i,i*10,i*10,i*3+1,i*3+2,"","<img src='"+T1[i*3]+"' width="+T1[(i*3+1)]+" height="+T1[(i*3+2)]+" border=0>")
+
+}
+
+
+
+function createContainer(N,Xp,Yp,W,H,At,HT,Op,St){
+
+with (document){
+
+write((!A && !B) ? "<layer id='"+N+"' left="+Xp+" top="+Yp+" width="+W+" height="+H : "<div id='"+N+"'"+" style='position:absolute;left:"+Xp+"; top:"+Yp+"; width:"+W+"; height:"+H+"; ");
+
+if(St){
+
+if (C)
+
+write(" style='");
+
+write(St+";' ")
+
+}
+
+else write((A || B)?"'":"");
+
+write((At)? At+">" : ">");
+
+write((HT) ? HT : "");
+
+if (!Op)
+
+closeContainer(N)
+
+}
+
+}
+
+
+
+function closeContainer(){
+
+document.write((A || B)?"</div>":"</layer>")
+
+}
+
+
+
+function getXpos(N){
+
+if (A)
+
+return parseInt(document.getElementById(N).style.left)
+
+else if (B)
+
+return parseInt(B[N].style.left)
+
+else
+
+return C[N].left
+
+}
+
+
+
+function getYpos(N){
+
+if (A)
+
+return parseInt(document.getElementById(N).style.top)
+
+else if (B)
+
+return parseInt(B[N].style.top)
+
+else
+
+return C[N].top
+
+}
+
+
+
+function moveContainer(N,DX,DY){
+
+c=(A)? document.getElementById(N).style : (B)? B[N].style : (C)? C[N] : "";
+
+if (!B){
+
+rightedge=window.innerWidth-T1[1]-20
+
+bottomedge=window.pageYOffset+window.innerHeight-T1[2]
+
+}
+
+c.left=Math.min(rightedge, DX+offsetx) + 'px';
+
+c.top=Math.min(bottomedge, DY+offsety) + 'px';
+
+}
+
+function cycle(){
+
+//if (IE5) 
+
+if (document.all&&window.print){
+
+ie5fix1=document.body.scrollLeft;
+
+ie5fix2=document.body.scrollTop;
+
+}
+
+for (i=0;i<(nos-1);i++){
+
+moveContainer("CUR"+i,getXpos("CUR"+(i+1)),getYpos("CUR"+(i+1)))
+
+}
+
+}
+
+
+
+function newPos(e){
+
+moveContainer("CUR"+(nos-1),(B)?event.clientX+ie5fix1:e.pageX+2,(B)?event.clientY+ie5fix2:e.pageY+2)
+
+}
+
+
+
+function getedgesIE(){
+
+rightedge=document.body.clientWidth-T1[1]
+
+bottomedge=document.body.scrollHeight-T1[2]
+
+}
+
+
+
+if (B){
+
+window.onload=getedgesIE
+
+window.onresize=getedgesIE
+
+}
+
+
+
+if(document.layers)
+
+document.captureEvents(Event.MOUSEMOVE)
+
+document.onmousemove=newPos
+
+setInterval("cycle()",rate)
+
+</script>
+
+
+
+
+<footer>
+© Mr. Jordan Chu 2016
+</footer>
+
+
+
+
+
+</body>
+</html>
